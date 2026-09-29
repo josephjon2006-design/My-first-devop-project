@@ -40,7 +40,7 @@ def run_pipeline_automation():
 Timestamp: {current_time}
 Target Repository: {repo_name}
 Live Stargazers: {repo_stars}
-Open Issues: {repo_issues}
+Open Issues: {open_issues}
 Status: BUILD & TEST PASSED SUCCESSFULLY ✅
 ========================================
 """
