@@ -11,6 +11,19 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies and run tests
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # This runs pytest and fails the pipeline if any test fails
+          pytest
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -40,4 +53,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          
